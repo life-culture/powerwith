@@ -1,0 +1,10 @@
+---
+import { href, hasText, isExternal } from '../lib/content.js';
+const { button, class: cls = '' } = Astro.props;
+const ok = button && hasText(button.label);
+const url = ok ? href(button.link) : null;
+const style = button?.style === 'primary' ? 'primary' : 'outline';
+---
+{ok && (url
+  ? <a class={`btn btn--${style} ${cls}`} href={url} rel={isExternal(button.link) ? 'noopener' : undefined}>{button.label}</a>
+  : <span class={`btn btn--${style} is-placeholder ${cls}`} aria-disabled="true" title={button.link || undefined}>{button.label}</span>)}

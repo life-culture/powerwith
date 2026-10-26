@@ -1,0 +1,20 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import Buttons from '../Buttons.astro';
+const { s, id, g } = Astro.props;
+const items = list(s.items);
+---
+{items.length > 0 && (
+<section id={id} class={`section ${g}`}>
+  <div class="wrap grid" style="--min:320px; gap:48px">
+    {items.map((it) => (
+      <div id={it.anchor || undefined} class="ruled-top" style="padding-top:28px">
+        {hasText(it.label) && <h2 class="kicker">{it.label}</h2>}
+        {hasText(it.headline) && <p class="display d-quote mt-s">{it.headline}</p>}
+        {hasText(it.body) && <p class="body muted mt-s" set:html={inline(it.body)} />}
+        <Buttons buttons={it.buttons} class="mt-m" />
+      </div>
+    ))}
+  </div>
+</section>
+)}

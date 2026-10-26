@@ -1,0 +1,21 @@
+seo:
+  title: Page not found · Power With
+  description: ''
+  social_image: ''
+  noindex: true
+header:
+  style: full
+footer:
+  style: site
+sections:
+  - type: text_page
+    id: not-found
+    visible: true
+    ground: obsidian
+    kicker: PAGE NOT FOUND
+    headline: This page has moved or no longer exists.
+    headline_size: standard
+    body: The book and its Introduction are a step away.
+    buttons:
+      - { label: RETURN HOME, link: /, style: outline }
+      - { label: READ THE INTRODUCTION, link: /introduction, style: primary }

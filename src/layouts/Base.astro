@@ -1,0 +1,66 @@
+---
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/400-italic.css';
+import '@fontsource/eb-garamond/600.css';
+import '@fontsource/montserrat/300.css';
+import '@fontsource/montserrat/400.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { getSettings, absoluteUrl, hasText } from '../lib/content.js';
+
+const { page, schema = false } = Astro.props;
+const settings = getSettings();
+const seo = page.seo ?? {};
+const title = hasText(seo.title) ? seo.title : settings.site?.name;
+const image = absoluteUrl(hasText(seo.social_image) ? seo.social_image : settings.site?.default_social_image);
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'http://localhost').href;
+const book = settings.book ?? {};
+const jsonld = schema && {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: book.title,
+  alternativeHeadline: book.subtitle,
+  author: { '@type': 'Person', name: book.author },
+  datePublished: book.publication_date ? String(book.publication_date) : undefined,
+  description: book.description,
+  image,
+  url: canonical,
+};
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {hasText(seo.description) && <meta name="description" content={seo.description} />}
+    {seo.noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0F0E0C" />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={settings.site?.name} />
+    <meta property="og:title" content={title} />
+    {hasText(seo.description) && <meta property="og:description" content={seo.description} />}
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={image} />}
+    {image && <meta property="og:image:alt" content={settings.site?.default_social_image_alt} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{settings.navigation?.skip_link_label}</a>
+    <Header settings={settings} header={page.header} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer settings={settings} footer={page.footer} />
+    <StickyBar bar={page.sticky_bar} />
+  </body>
+</html>

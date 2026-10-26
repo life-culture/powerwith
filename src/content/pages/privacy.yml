@@ -1,0 +1,22 @@
+seo:
+  title: Privacy · Power With
+  description: How Power With and Sophia Life handle the information you share.
+  social_image: ''
+  noindex: false
+header:
+  style: full
+footer:
+  style: site
+sections:
+  - type: text_page
+    id: privacy
+    visible: true
+    ground: obsidian
+    kicker: PRIVACY
+    headline: Privacy policy
+    headline_size: standard
+    body: |-
+      [Privacy policy text to be supplied by Sophia before launch.]
+
+      This site collects your first name and email address when you ask for the Introduction or claim the Orientation. Your details go to the email platform Sophia uses to send her letters. You can unsubscribe from any email at any time.
+    buttons: []

@@ -1,0 +1,24 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import Buttons from '../Buttons.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.items);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap">
+    <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+    {hasText(s.intro) && <p class="body mt-m" style="max-width:36em" set:html={inline(s.intro)} />}
+    {items.length > 0 && (
+      <div class="grid mt-l" style="--min:260px">
+        {items.map((c) => (
+          <div class="ruled-top">
+            {hasText(c.label) && <h3 class="kicker label--fg">{c.label}</h3>}
+            {hasText(c.body) && <p class="body mt-s" set:html={inline(c.body)} />}
+          </div>
+        ))}
+      </div>
+    )}
+    <Buttons buttons={s.buttons} />
+  </div>
+</section>

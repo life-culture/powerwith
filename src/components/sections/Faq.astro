@@ -1,0 +1,21 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.items).filter((q) => q && hasText(q.question));
+---
+{items.length > 0 && (
+<section id={id} class={`section ${g}`}>
+  <div class="wrap">
+    <SectionHead kicker={s.kicker} headline={s.headline} h1={first} />
+    <div class="grid" style="--min:320px; gap: 40px 56px">
+      {items.map((q) => (
+        <div>
+          <h3 class="display d-quote">{q.question}</h3>
+          {hasText(q.answer) && <p class="body muted mt-s" set:html={inline(q.answer)} />}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+)}

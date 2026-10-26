@@ -1,0 +1,25 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.items);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap wrap--narrow">
+    <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+    {hasText(s.intro) && <p class="body mt-m" set:html={inline(s.intro)} />}
+    {items.length > 0 && (
+      <ol class="mt-l rule-list measures">
+        {items.map((t, i) => (
+          <li><span class="kicker n">{String(i + 1).padStart(2, '0')}</span><span class="display d-quote" set:html={inline(t)} /></li>
+        ))}
+      </ol>
+    )}
+    {hasText(s.closing) && <p class="closing mt-l">{s.closing}</p>}
+  </div>
+</section>
+<style>
+  .measures li { display: flex; gap: 28px; align-items: baseline; padding-block: 22px; }
+  .n { flex: 0 0 auto; letter-spacing: 0.2em; }
+  @media (max-width: 560px) { .measures li { gap: 18px; } }
+</style>

@@ -1,0 +1,31 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import Portrait from '../Portrait.astro';
+import Buttons from '../Buttons.astro';
+const { s, id, g, first } = Astro.props;
+const paras = list(s.paragraphs);
+const names = list(s.names);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap split author">
+    <div class="side pic"><Portrait image={s.portrait} /></div>
+    <div class="grow">
+      <SectionHead kicker={s.kicker} headline={s.name} h1={first} />
+      {paras.length > 0 && <div class="body mt-m paras">{paras.map((p) => <p set:html={inline(p)} />)}</div>}
+      {names.length > 0 && (
+        <>
+          {hasText(s.names_label) && <p class="kicker mt-l">{s.names_label}</p>}
+          <p class="names muted">{names.join(' · ')}</p>
+        </>
+      )}
+      <Buttons buttons={s.buttons} class="mt-l" />
+    </div>
+  </div>
+</section>
+<style>
+  .author { align-items: flex-start; }
+  .pic { flex: 1 1 340px; max-width: 520px; }
+  .paras > p + p { margin-top: 18px; }
+  .names { margin-top: 12px; font-size: 19px; line-height: 1.6; }
+</style>

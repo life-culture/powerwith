@@ -1,0 +1,58 @@
+site:
+  name: Power With
+  author: Sophia Life
+  default_social_image: /uploads/book-cover-front.jpg
+  default_social_image_alt: The cover of Power With by Sophia Life.
+book:
+  title: Power With
+  subtitle: The Relational Foundation of Lasting Influence
+  author: Sophia Life
+  publication_date: 2027-01
+  description: A book for leaders who want strength and closeness held together.
+navigation:
+  wordmark: POWER WITH
+  logo_link: /
+  items:
+    - label: THE FRAMEWORK
+      link: /#framework
+    - label: THE PRINCIPLES
+      link: /#principles
+    - label: THE AUTHOR
+      link: /#author
+    - label: FOR ORGANIZATIONS
+      link: /#organizations
+  preorder_link:
+    visible: true
+    label: PRE-ORDER
+    link: /preorder
+  button:
+    label: GET THE INTRODUCTION
+    link: /#introduction
+  menu_open_label: Open menu
+  menu_close_label: Close menu
+  skip_link_label: Skip to content
+footer:
+  wordmark_line: POWER WITH · SOPHIA LIFE
+  links:
+    - label: CONTACT
+      link: '[contact email or form]'
+    - label: INSTAGRAM
+      link: https://www.instagram.com/sophia.life.wisdom
+    - label: LINKEDIN
+      link: '[LinkedIn URL]'
+    - label: SUBSTACK
+      link: '[The Quality of Life URL]'
+    - label: PRE-ORDER
+      link: /preorder
+    - label: PRIVACY
+      link: /privacy
+  copyright: © 2026 SOPHIA LIFE
+forms:
+  optin_destination: ''
+  claim_destination: ''
+  success_redirect: /thank-you
+  messages:
+    email_required: Please enter your email address.
+    email_invalid: Please check your email address.
+    error: Something went wrong. Please try again in a moment.
+    sending: SENDING

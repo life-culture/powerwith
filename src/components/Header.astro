@@ -1,0 +1,81 @@
+---
+import { href, hasText, list } from '../lib/content.js';
+import Mark from './Mark.astro';
+import Button from './Button.astro';
+const { settings, header = {} } = Astro.props;
+const nav = settings.navigation ?? {};
+const style = header.style ?? 'full';
+const items = list(nav.items).filter((i) => i && hasText(i.label));
+const pre = nav.preorder_link;
+const showPre = pre && pre.visible !== false && hasText(pre.label);
+const cta = style === 'simple' ? header.button : nav.button;
+---
+{style !== 'none' && (
+<header class="site-header g-obsidian">
+  <div class="wrap bar">
+    <a class="brand" href={href(nav.logo_link ?? '/')}>
+      <Mark size={40} stroke={1.4} />
+      <span class="wordmark">{nav.wordmark}</span>
+    </a>
+    {style === 'full' && (
+      <>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-open={nav.menu_open_label} data-close={nav.menu_close_label}>
+          <span class="sr-only">{nav.menu_open_label}</span>
+          <span class="bars" aria-hidden="true"><span></span><span></span></span>
+        </button>
+        <nav id="site-menu" class="menu" aria-label="Main">
+          <ul>
+            {items.map((i) => <li><a class="nav-link" href={href(i.link) ?? undefined}>{i.label}</a></li>)}
+            {showPre && <li><a class="nav-link nav-pre" href={href(pre.link) ?? undefined}>{pre.label}</a></li>}
+          </ul>
+          {cta && hasText(cta.label) && <Button button={{ ...cta, style: 'primary' }} class="nav-cta" />}
+        </nav>
+      </>
+    )}
+    {style === 'simple' && cta && hasText(cta.label) && <Button button={{ ...cta, style: 'primary' }} class="nav-cta" />}
+  </div>
+</header>
+)}
+<style>
+  .site-header { border-bottom: 1px solid var(--umber); position: relative; z-index: 20; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+  .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--bone); min-height: 44px; }
+  .brand :global(.mark) { color: var(--clay); width: 34px; }
+  .wordmark { font-family: var(--font-label); font-size: var(--fs-wordmark); letter-spacing: 0.32em; white-space: nowrap; }
+  .menu ul { display: flex; align-items: center; gap: 8px 24px; white-space: nowrap; }
+  .nav-link { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.24em; text-decoration: none; color: var(--stone); display: inline-flex; align-items: center; min-height: 44px; }
+  .nav-link:hover { color: var(--bone); }
+  .nav-pre { text-decoration: underline; font-size: 11px; }
+  :global(.nav-cta) { padding: 14px 20px !important; white-space: nowrap; }
+  .menu { display: flex; align-items: center; gap: 24px; }
+  .menu-toggle { display: none; width: 44px; height: 44px; background: transparent; border: 0; color: var(--bone); cursor: pointer; padding: 0; }
+  .bars { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .bars span { display: block; width: 22px; height: 1px; background: currentColor; transition: transform 200ms ease-out; }
+  .menu-toggle[aria-expanded='true'] .bars span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded='true'] .bars span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+  @media (max-width: 1240px) {
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    .menu { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--obsidian); border-bottom: 1px solid var(--umber); flex-direction: column; align-items: stretch; padding: 8px var(--gutter) 28px; }
+    .menu.is-open { display: flex; }
+    .menu ul { flex-direction: column; align-items: stretch; gap: 0; }
+    .menu li { border-bottom: 1px solid var(--umber); }
+    .nav-link { padding-block: 10px; width: 100%; }
+    .menu :global(.nav-cta) { margin-top: 20px; }
+  }
+  @media (max-width: 400px) { .wordmark { letter-spacing: 0.26em; } }
+</style>
+<script>
+  const t = document.querySelector('.menu-toggle');
+  const m = document.getElementById('site-menu');
+  if (t && m) {
+    const set = (open) => {
+      t.setAttribute('aria-expanded', String(open));
+      m.classList.toggle('is-open', open);
+      t.querySelector('.sr-only').textContent = open ? t.dataset.close : t.dataset.open;
+    };
+    t.addEventListener('click', () => set(t.getAttribute('aria-expanded') !== 'true'));
+    m.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+  }
+</script>

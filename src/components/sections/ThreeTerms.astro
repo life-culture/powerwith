@@ -1,0 +1,36 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import Icon from '../Icon.astro';
+import Mark from '../Mark.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.items);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap">
+    <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+    {hasText(s.intro) && <p class="body measure mt-m" set:html={inline(s.intro)} />}
+    {items.length > 0 && (
+      <div class="grid mt-xl" style="--min:280px">
+        {items.map((it) => (
+          <div class="ruled-top term">
+            {it.icon === 'mark-power-with'
+              ? <span class="tmark"><Mark size={84} stroke={1.4} /></span>
+              : (it.icon && it.icon !== 'none') && <Icon name={it.icon} size={56} class="ticon" />}
+            {hasText(it.label) && <h3 class="label label--fg mt-s">{it.label}</h3>}
+            {hasText(it.definition) && <p class="display d-quote mt-s">{it.definition}</p>}
+            {hasText(it.body) && <p class="body mt-s" set:html={inline(it.body)} />}
+          </div>
+        ))}
+      </div>
+    )}
+    {hasText(s.closing) && <p class="closing mt-xl">{s.closing}</p>}
+  </div>
+</section>
+<style>
+  .term { padding-top: 28px; }
+  .term :global(.ticon) { color: var(--label); }
+  .tmark { display: block; height: 56px; }
+  .tmark :global(svg) { height: 56px; width: auto; }
+  .label { font-size: 13px; }
+</style>

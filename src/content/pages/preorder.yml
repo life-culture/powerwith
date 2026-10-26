@@ -1,0 +1,117 @@
+seo:
+  title: Pre-order Power With by Sophia Life
+  description: Pre-order Power With and receive the Orientation, a companion for your first reading. Publishing January 2027.
+  social_image: /uploads/book-cover-front.jpg
+  noindex: false
+header:
+  style: simple
+  button:
+    label: PRE-ORDER
+    link: '#formats'
+footer:
+  style: site
+sections:
+  - type: sales_hero
+    id: formats
+    visible: true
+    ground: obsidian
+    image:
+      src: /uploads/book-cover-front.jpg
+      alt: The cover of Power With by Sophia Life.
+    kicker: PRE-ORDER · PUBLISHING JANUARY 2027
+    headline: Power and closeness, held together.
+    headline_size: standard
+    body: Reserve your copy of Power With and receive the Orientation, a companion for your first reading. Every pre-order counts toward launch week.
+    formats:
+      - name: PAPERBACK
+        price: $21.95
+        price_note: '[to confirm]'
+        note: ''
+        retailers:
+          - { label: AMAZON, url: '[Amazon paperback URL]', style: primary }
+          - { label: BARNES & NOBLE, url: '[Barnes & Noble URL]', style: outline }
+          - { label: BOOKSHOP.ORG, url: '[Bookshop.org URL]', style: outline }
+          - { label: YOUR LOCAL BOOKSTORE, url: '[IndieBound or store finder URL]', style: outline }
+      - name: KINDLE
+        price: '[PRICE]'
+        price_note: ''
+        note: ''
+        retailers:
+          - { label: AMAZON KINDLE, url: '[Kindle URL]', style: outline }
+      - name: AUDIOBOOK
+        price: COMING
+        price_note: ''
+        note: An audiobook is planned. Readers on the list hear first.
+        retailers: []
+  - type: optin_band
+    id: notify
+    visible: true
+    ground: umber
+    kicker: PRE-ORDERS OPEN SOON
+    headline: Hear first when pre-orders open.
+    headline_size: standard
+    body: Leave your email and Sophia will write the day the book is ready to order. The Introduction comes with it, free.
+    form:
+      show_first_name: true
+      first_name_label: FIRST NAME
+      email_label: EMAIL ADDRESS
+      email_placeholder: ''
+      button: TELL ME WHEN IT OPENS
+      source: preorder-waitlist
+    helper: Occasional letters from Sophia. Unsubscribe anytime.
+  - type: claim_gift
+    id: claim
+    visible: true
+    ground: clay
+    kicker: PRE-ORDER GIFT
+    headline: Pre-order and receive the Orientation.
+    headline_size: standard
+    body: A companion for your first reading. Power With asks a great deal of its reader. The Orientation helps you take it in and keep it close.
+    list_label: INSIDE THE ORIENTATION
+    list:
+      - The framework on one page. Power, power over and power with.
+      - The ten principles at a glance, with the practice from each.
+      - How to read the book. Straight through once, then back to the principles one at a time.
+      - The five measures of success, set as a reflection to return to.
+      - The pause, the single practice beneath all ten.
+    form:
+      intro: Order from any retailer, then enter your order number. The Orientation arrives by email.
+      name_label: NAME
+      email_label: EMAIL
+      store_label: WHERE YOU ORDERED
+      store_options:
+        - Amazon
+        - Barnes & Noble
+        - Bookshop.org
+        - Local bookstore
+      order_label: ORDER NUMBER
+      button: CLAIM THE ORIENTATION
+      source: preorder-claim
+      success_message: Thank you. Your claim is in, and the Orientation will arrive by email.
+  - type: two_links
+    id: gift-and-bulk
+    visible: true
+    ground: obsidian
+    items:
+      - anchor: give
+        label: GIVE THIS BOOK
+        headline: For the leader in your life.
+        body: Give them the book, and keep a copy for yourself.
+        buttons:
+          - { label: SEND A COPY, link: '#formats', style: outline }
+      - anchor: teams
+        label: FOR TEAMS
+        headline: Copies for your leadership team.
+        body: Orders of ten or more receive tier pricing and a reading guide. [Tier pricing to set.]
+        buttons:
+          - { label: ORDER IN BULK, link: '/#contact', style: outline }
+  - type: faq
+    id: questions
+    visible: true
+    ground: obsidian
+    kicker: QUESTIONS
+    items:
+      - { question: When will my copy arrive?, answer: 'Pre-orders ship on publication day in January 2027. [Exact date to confirm.]' }
+      - { question: Which formats include the Orientation?, answer: 'Every pre-order, in any format, from any retailer.' }
+      - { question: Is there an audiobook?, answer: 'Yes. An audiobook is planned, and readers on the list will hear first.' }
+      - { question: Can my company order in bulk?, answer: Yes. Orders of ten or more receive tier pricing and a reading guide. }

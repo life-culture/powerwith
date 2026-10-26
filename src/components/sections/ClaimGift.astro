@@ -1,0 +1,23 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import ClaimForm from '../ClaimForm.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.list);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap split">
+    <div class="grow">
+      <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+      {hasText(s.body) && <p class="body mt-m" set:html={inline(s.body)} />}
+      {items.length > 0 && (
+        <>
+          {hasText(s.list_label) && <h3 class="kicker mt-l">{s.list_label}</h3>}
+          <ul class="rule-list mt-s items">{items.map((t) => <li set:html={inline(t)} />)}</ul>
+        </>
+      )}
+    </div>
+    <div class="side" style="flex-basis:400px"><ClaimForm form={s.form} /></div>
+  </div>
+</section>
+<style>.items { font-size: 20px; line-height: 1.45; } .items li { padding-block: 12px; }</style>

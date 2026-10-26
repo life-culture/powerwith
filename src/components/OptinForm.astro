@@ -1,0 +1,47 @@
+---
+// One reusable opt-in form. Its destination comes from site settings, never from the page.
+import { getSettings, href, hasText, absoluteUrl } from '../lib/content.js';
+const { form = {}, layout = 'row', id } = Astro.props;
+const settings = getSettings();
+const f = settings.forms ?? {};
+const uid = id ?? `f-${form.source ?? 'optin'}-${Math.random().toString(36).slice(2, 7)}`;
+const showName = form.show_first_name === true;
+const endpoint = hasText(f.optin_destination) && !f.optin_destination.startsWith('[') ? f.optin_destination : '';
+---
+<form
+  class={`js-optin ${layout === 'row' ? 'form-row' : 'form-col'}`}
+  method="post"
+  action={endpoint || undefined}
+  novalidate
+  data-endpoint={endpoint}
+  data-redirect={href(f.success_redirect ?? '/thank-you')}
+  data-source={form.source ?? 'unknown'}
+  data-kind="optin"
+  data-msg-required={f.messages?.email_required}
+  data-msg-invalid={f.messages?.email_invalid}
+  data-msg-error={f.messages?.error}
+  data-msg-sending={f.messages?.sending}
+>
+  {showName && (
+    <div class="field field--name">
+      <label for={`${uid}-name`}>{form.first_name_label}</label>
+      <input class="input" id={`${uid}-name`} name="first_name" type="text" autocomplete="given-name" placeholder={form.first_name_placeholder || undefined} />
+    </div>
+  )}
+  <div class="field">
+    <label for={`${uid}-email`}>{form.email_label}</label>
+    <input class="input" id={`${uid}-email`} name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby={`${uid}-msg`} placeholder={form.email_placeholder || undefined} />
+  </div>
+  <input type="hidden" name="source" value={form.source ?? 'unknown'} />
+  <input type="hidden" name="redirect" value={absoluteUrl(f.success_redirect ?? '/thank-you')} />
+  <div class="hp" aria-hidden="true">
+    <label for={`${uid}-website`}>Website</label>
+    <input id={`${uid}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <button class="btn btn--primary" type="submit">{form.button}</button>
+  <p class="form-msg" id={`${uid}-msg`} role="alert" aria-live="polite"></p>
+</form>
+<script>
+  import { wireForms } from '../scripts/forms.js';
+  wireForms();
+</script>

@@ -1,0 +1,15 @@
+---
+import { asset } from '../lib/content.js';
+import Mark from './Mark.astro';
+const { image, class: cls = '', ratio = '4 / 5' } = Astro.props;
+const src = asset(image?.src);
+---
+<div class={`portrait ${cls}`} style={`aspect-ratio:${ratio}`}>
+  {src
+    ? <img src={src} alt={image?.alt ?? ''} loading="lazy" decoding="async" />
+    : <div class="portrait-empty" aria-hidden="true"><Mark size={96} stroke={0.9} /></div>}
+</div>
+<style>
+  .portrait { width: 100%; overflow: hidden; }
+  .portrait img, .portrait .portrait-empty { width: 100%; height: 100%; object-fit: cover; }
+</style>

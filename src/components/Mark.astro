@@ -1,0 +1,8 @@
+---
+// The power with sigil: two equal circles, each centre on the other's edge.
+const { size = 40, stroke = 1.4, label = '' } = Astro.props;
+---
+<svg class="mark" width={size} height={size * 0.6667} viewBox="0 0 60 40" fill="none" stroke="currentColor" role={label ? 'img' : undefined} aria-label={label || undefined} aria-hidden={label ? undefined : 'true'}>
+  <circle cx="22.5" cy="20" r="15" stroke-width={stroke} vector-effect="non-scaling-stroke" />
+  <circle cx="37.5" cy="20" r="15" stroke-width={stroke} vector-effect="non-scaling-stroke" />
+</svg>

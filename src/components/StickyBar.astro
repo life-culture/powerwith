@@ -1,0 +1,34 @@
+---
+import { hasText } from '../lib/content.js';
+const { bar } = Astro.props;
+const show = bar && bar.visible !== false && hasText(bar.button);
+---
+{show && (
+  <div class="sticky-bar g-obsidian" data-target={bar.target}>
+    {hasText(bar.label) && <span class="kicker">{bar.label}</span>}
+    <a class="btn btn--primary" href={bar.target || '#'}>{bar.button}</a>
+  </div>
+)}
+<style>
+  .sticky-bar { display: none; }
+  @media (max-width: 767px) {
+    .sticky-bar { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--umber); transition: transform 250ms ease-out; }
+    .sticky-bar .kicker { font-size: 10px; letter-spacing: 0.22em; }
+    .sticky-bar .btn { padding: 14px 16px; font-size: 11px; letter-spacing: 0.2em; white-space: nowrap; }
+    .sticky-bar.is-hidden { transform: translateY(110%); }
+    :global(body:has(.sticky-bar)) { padding-bottom: 76px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .sticky-bar { transition: none; } }
+</style>
+<script>
+  // Step aside while a signup form is on screen, so the bar never covers it.
+  const bar = document.querySelector('.sticky-bar');
+  if (bar && 'IntersectionObserver' in window) {
+    const seen = new Set();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+      bar.classList.toggle('is-hidden', seen.size > 0);
+    });
+    document.querySelectorAll('form.js-optin').forEach((f) => io.observe(f));
+  }
+</script>

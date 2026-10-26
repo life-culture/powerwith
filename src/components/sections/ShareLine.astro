@@ -1,0 +1,28 @@
+---
+import { hasText, absoluteUrl } from '../../lib/content.js';
+const { s, id, g } = Astro.props;
+const url = absoluteUrl(s.share_url || '/');
+---
+<section id={id} class={`share ${g}`}>
+  <div class="wrap row">
+    {hasText(s.text) && <p class="body muted">{s.text}</p>}
+    {hasText(s.button) && <button class="btn btn--outline js-copy" type="button" data-url={url} data-copied={s.copied_label}>{s.button}</button>}
+  </div>
+</section>
+<style>
+  .share { padding-block: 32px 96px; }
+  .row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; text-align: center; }
+</style>
+<script>
+  document.querySelectorAll('.js-copy').forEach((b) => {
+    b.addEventListener('click', async () => {
+      const url = b.dataset.url?.startsWith('http') ? b.dataset.url : location.origin + b.dataset.url;
+      const label = b.textContent;
+      try {
+        if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ url });
+        else await navigator.clipboard.writeText(url);
+        if (b.dataset.copied) { b.textContent = b.dataset.copied; setTimeout(() => (b.textContent = label), 2400); }
+      } catch {}
+    });
+  });
+</script>

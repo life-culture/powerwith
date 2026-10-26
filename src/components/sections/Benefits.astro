@@ -1,0 +1,41 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+const { s, id, g, first } = Astro.props;
+const cols = list(s.columns);
+const items = list(s.list);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap">
+    <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+    {hasText(s.quote) && (
+      <figure class="mt-m quote">
+        <blockquote class="display italic muted">{s.quote}</blockquote>
+        {hasText(s.quote_attribution) && <figcaption class="kicker mt-s">{s.quote_attribution}</figcaption>}
+      </figure>
+    )}
+    {cols.length > 0 && (
+      <div class="grid mt-xl">
+        {cols.map((c) => (
+          <div class="ruled-top">
+            {hasText(c.label) && <h3 class="kicker">{c.label}</h3>}
+            {hasText(c.body) && <p class="body mt-s" set:html={inline(c.body)} />}
+          </div>
+        ))}
+      </div>
+    )}
+    {items.length > 0 && (
+      <div class="split mt-xl">
+        {hasText(s.list_label) && <h3 class="kicker side listlabel">{s.list_label}</h3>}
+        <ul class="grow rule-list body">{items.map((t) => <li set:html={inline(t)} />)}</ul>
+      </div>
+    )}
+    {hasText(s.closing) && <p class="body muted measure mt-l" set:html={inline(s.closing)} />}
+  </div>
+</section>
+<style>
+  .quote { max-width: 40em; }
+  .quote blockquote { font-size: clamp(22px, 2.2vw, 26px); line-height: 1.35; }
+  .listlabel { flex: 1 1 240px; }
+  .split :global(.grow) { flex: 999 1 520px; }
+</style>

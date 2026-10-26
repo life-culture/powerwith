@@ -1,0 +1,32 @@
+---
+import { inline, hasText } from '../../lib/content.js';
+import OptinForm from '../OptinForm.astro';
+import Cover from '../Cover.astro';
+const { s, id, g } = Astro.props;
+---
+<section id={id} class={`hero ${g}`}>
+  <div class="wrap inner">
+    <div class="copy">
+      {hasText(s.kicker) && <p class="kicker">{s.kicker}</p>}
+      {hasText(s.kicker) && <div class="rule" aria-hidden="true"></div>}
+      {hasText(s.title) && <h1 class="display d-xl">{s.title}</h1>}
+      {hasText(s.subtitle) && <p class="display italic subtitle muted">{s.subtitle}</p>}
+      {hasText(s.lead) && <p class="display d-sm lead">{s.lead}</p>}
+      {hasText(s.body) && <p class="body measure mt-m" set:html={inline(s.body)} />}
+      <div class="form"><OptinForm form={s.form} /></div>
+      {hasText(s.helper) && <p class="body-sm muted mt-s" set:html={inline(s.helper)} />}
+    </div>
+    {s.image?.src && <div class="art"><Cover image={s.image} eager /></div>}
+  </div>
+</section>
+<style>
+  .hero { padding-block: 44px 56px; }
+  .inner { display: flex; flex-wrap: wrap; align-items: center; gap: 48px 72px; }
+  .copy { flex: 999 1 520px; min-width: 0; }
+  .art { flex: 1 1 300px; display: flex; justify-content: center; }
+  .subtitle { margin-top: 14px; font-size: clamp(21px, 2.2vw, 30px); line-height: 1.2; }
+  .lead { margin-top: 32px; max-width: 22em; }
+  .form { margin-top: 32px; max-width: 640px; }
+  @media (min-width: 768px) { .hero { padding-block: 96px 104px; } .lead { margin-top: 40px; } .form { margin-top: 40px; } }
+  @media (max-width: 767px) { .art :global(.cover) { width: 200px; } }
+</style>

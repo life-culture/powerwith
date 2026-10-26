@@ -1,0 +1,11 @@
+---
+import { asset, hasText } from '../lib/content.js';
+import Mark from './Mark.astro';
+const { image, eager = false, class: cls = '' } = Astro.props;
+const src = asset(image?.src);
+---
+<div class={`cover ${cls}`}>
+  {src
+    ? <img src={src} alt={image?.alt ?? ''} width="900" height="1350" loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : undefined} />
+    : <div class="portrait-empty" style="height:100%" aria-hidden="true"><Mark size={90} stroke={0.8} /></div>}
+</div>

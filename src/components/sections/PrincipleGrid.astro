@@ -1,0 +1,35 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import Icon from '../Icon.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.items);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap">
+    <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+    {hasText(s.intro) && <p class="body measure mt-m" set:html={inline(s.intro)} />}
+    {items.length > 0 && (
+      <ol class="grid mt-xl" style="--min:210px">
+        {items.map((p) => (
+          <li class="p">
+            {p.icon && <Icon name={p.icon} size={48} />}
+            <h3 class="kicker name">{[p.number, p.name].filter(Boolean).join(' ')}</h3>
+            {hasText(p.line) && <p class="line" set:html={inline(p.line)} />}
+          </li>
+        ))}
+      </ol>
+    )}
+    {hasText(s.closing) && <p class="closing mt-xl">{s.closing}</p>}
+  </div>
+</section>
+<style>
+  .name { margin-top: 16px; letter-spacing: 0.22em; }
+  .line { margin-top: 8px; font-size: 19px; line-height: 1.4; }
+  @media (max-width: 560px) {
+    ol.grid { grid-template-columns: 1fr; gap: 0; }
+    .p { display: grid; grid-template-columns: 48px 1fr; column-gap: 18px; padding-block: 18px; border-top: 1px solid var(--hair); }
+    .p :global(.icon) { grid-row: span 2; }
+    .name { margin-top: 2px; }
+  }
+</style>

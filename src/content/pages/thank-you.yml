@@ -1,0 +1,35 @@
+seo:
+  title: The Introduction is on its way
+  description: ''
+  social_image: ''
+  noindex: true
+header:
+  style: none
+footer:
+  style: simple
+  copyright: © 2026 SOPHIA LIFE
+  links:
+    - { label: BACK TO HOME, link: / }
+sections:
+  - type: confirmation
+    id: confirmation
+    visible: true
+    ground: obsidian
+    show_mark: true
+    headline: The Introduction is on its way.
+    body: Look for an email from Sophia in the next few minutes. Move it to your primary inbox so her letters keep reaching you.
+  - type: offer_card
+    id: preorder-offer
+    visible: true
+    ground: clay
+    label: PUBLISHING JANUARY 2027
+    body: Pre-order now and receive the Orientation guide, a companion for your first reading.
+    button: { label: PRE-ORDER AND CLAIM THE GUIDE, link: /preorder, style: primary }
+  - type: share_line
+    id: share
+    visible: true
+    ground: obsidian
+    text: Know someone who leads? Send them this page.
+    button: COPY LINK
+    copied_label: LINK COPIED
+    share_url: /introduction

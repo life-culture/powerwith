@@ -1,0 +1,41 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import Cover from '../Cover.astro';
+import Button from '../Button.astro';
+const { s, id, g, first } = Astro.props;
+const formats = list(s.formats);
+---
+<section id={id} class={`hero ${g}`}>
+  <div class="wrap split inner">
+    {s.image?.src && <div class="side art"><Cover image={s.image} eager /></div>}
+    <div class="grow">
+      <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} scale="lg" />
+      {hasText(s.body) && <p class="body measure mt-m" set:html={inline(s.body)} />}
+      {formats.map((f) => (
+        <div class="ruled-top fmt">
+          <div class="fhead">
+            {hasText(f.name) && <h2 class="label label--fg fname">{f.name}</h2>}
+            {(hasText(f.price) || hasText(f.price_note)) && <span class="label price">{[f.price, f.price_note].filter(hasText).join(' ')}</span>}
+          </div>
+          {list(f.retailers).length > 0 && (
+            <div class="btn-row mt-m">{list(f.retailers).map((r) => <Button button={{ label: r.label, link: r.url, style: r.style }} />)}</div>
+          )}
+          {hasText(f.note) && <p class="body muted mt-s" set:html={inline(f.note)} />}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .hero { padding-block: 44px 56px; }
+  .inner { align-items: flex-start; }
+  .art { display: flex; justify-content: center; flex-basis: 300px; }
+  .fmt { margin-top: 32px; padding-top: 28px; }
+  .fmt:first-of-type { margin-top: 48px; }
+  .fhead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .fname { font-size: 14px; }
+  .price { font-size: 13px; letter-spacing: 0.2em; }
+  @media (min-width: 768px) { .hero { padding-block: 88px 96px; } }
+  @media (max-width: 767px) { .art :global(.cover) { width: 200px; } }
+</style>

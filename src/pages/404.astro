@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import Sections from '../components/Sections.astro';
+import { getPage } from '../lib/content.js';
+const page = getPage('not-found');
+---
+<Base page={page} schema={false}>
+  <Sections page={page} />
+</Base>

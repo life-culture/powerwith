@@ -1,0 +1,73 @@
+seo:
+  title: Read the Introduction to Power With, free
+  description: The opening chapter of Power With by Sophia Life. A language for power that changes what you are able to see.
+  social_image: /uploads/book-cover-front.jpg
+  noindex: false
+header:
+  style: logo
+footer:
+  style: simple
+  copyright: © 2026 SOPHIA LIFE
+  links:
+    - { label: PRIVACY, link: /privacy }
+sections:
+  - type: landing_hero
+    id: top
+    visible: true
+    ground: obsidian
+    kicker: FREE FROM POWER WITH BY SOPHIA LIFE
+    headline: The strategies that kept you safe are still running.
+    headline_size: standard
+    subhead: Read the Introduction to Power With, free.
+    body: In the opening pages, Sophia Life gives you a language for power that changes what you are able to see. In your marriage, in your family and in every team you lead.
+    list_label: INSIDE THE INTRODUCTION
+    list:
+      - The three terms that organize every relationship you hold. Power, power over and power with.
+      - Why the qualities that drive achievement so often create distance at home.
+      - How defended patterns form, and why they come to feel like personality.
+      - Why these patterns can change, and where change begins.
+    audience: For leaders who have built a great deal and still sense something essential is out of reach. And for the people who love them.
+    form_card:
+      ground: clay
+      heading: Send me the Introduction.
+      form:
+        show_first_name: true
+        first_name_label: FIRST NAME
+        email_label: EMAIL ADDRESS
+        email_placeholder: ''
+        button: SEND ME THE INTRODUCTION
+        source: landing-top
+      helper: Free. Arrives in your inbox today. Unsubscribe anytime.
+  - type: quote_band
+    id: quote
+    visible: true
+    ground: oxblood
+    align: center
+    quote: What looks like confidence is often defense with good posture.
+    attribution: FROM POWER WITH
+  - type: author_short
+    id: author
+    visible: true
+    ground: obsidian
+    portrait:
+      src: ''
+      alt: '[Describe the chosen portrait of Sophia Life]'
+    label: SOPHIA LIFE
+    body: Sophia Life is an author, coach and organizational consultant. Power With is the synthesis of more than a decade of study and lived practice.
+  - type: optin_cta
+    id: begin
+    visible: true
+    ground: obsidian
+    align: center
+    show_mark: false
+    italic: false
+    line: Begin with the first pages.
+    body: ''
+    form:
+      show_first_name: true
+      first_name_label: FIRST NAME
+      email_label: EMAIL ADDRESS
+      email_placeholder: ''
+      button: SEND ME THE INTRODUCTION
+      source: landing-bottom
+    helper: ''

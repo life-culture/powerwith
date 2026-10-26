@@ -1,0 +1,7 @@
+---
+import Button from './Button.astro';
+import { list } from '../lib/content.js';
+const { buttons, class: cls = 'mt-l' } = Astro.props;
+const items = list(buttons).filter((b) => b && b.label);
+---
+{items.length > 0 && <div class={`btn-row ${cls}`}>{items.map((b) => <Button button={b} />)}</div>}

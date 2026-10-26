@@ -1,0 +1,21 @@
+---
+import { hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+const { s, id, g, first } = Astro.props;
+const items = list(s.items).filter((e) => e && hasText(e.quote));
+---
+{items.length > 0 && (
+<section id={id} class={`section ${g}`}>
+  <div class="wrap">
+    <SectionHead kicker={s.kicker} headline={s.headline} h1={first} />
+    <div class="grid" style="--min:300px; gap: 48px">
+      {items.map((e) => (
+        <figure>
+          <blockquote class="display d-quote">{e.quote}</blockquote>
+          {(hasText(e.name) || hasText(e.title)) && <figcaption class="kicker mt-m">{[e.name, e.title].filter(hasText).join(' · ')}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+)}

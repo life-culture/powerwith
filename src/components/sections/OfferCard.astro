@@ -1,0 +1,22 @@
+---
+import { inline, hasText } from '../../lib/content.js';
+import Button from '../Button.astro';
+const { s, id, g } = Astro.props;
+---
+<section id={id} class="g-obsidian outer">
+  <div class="wrap" style="max-width:calc(1000px + 2*var(--gutter))">
+    <div class={`card ${g}`}>
+      <div class="txt">
+        {hasText(s.label) && <p class="kicker">{s.label}</p>}
+        {hasText(s.body) && <p class="display d-quote mt-s" set:html={inline(s.body)} />}
+      </div>
+      <Button button={s.button} />
+    </div>
+  </div>
+</section>
+<style>
+  .outer { padding-bottom: 24px; }
+  .card { padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between; }
+  .txt { flex: 999 1 360px; min-width: 0; }
+  @media (min-width: 768px) { .card { padding: 48px; } }
+</style>

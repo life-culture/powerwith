@@ -1,0 +1,19 @@
+---
+import { inline, hasText } from '../../lib/content.js';
+import Portrait from '../Portrait.astro';
+const { s, id, g } = Astro.props;
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap row">
+    <div class="pic"><Portrait image={s.portrait} ratio="5 / 6" /></div>
+    <div class="txt">
+      {hasText(s.label) && <h2 class="kicker">{s.label}</h2>}
+      {hasText(s.body) && <p class="body mt-s" set:html={inline(s.body)} />}
+    </div>
+  </div>
+</section>
+<style>
+  .row { display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: center; max-width: calc(1100px + 2 * var(--gutter)); }
+  .pic { flex: 0 0 200px; }
+  .txt { flex: 999 1 380px; min-width: 0; }
+</style>

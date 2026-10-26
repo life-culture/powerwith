@@ -1,0 +1,14 @@
+---
+import { hasText } from '../../lib/content.js';
+const { s, id, g } = Astro.props;
+const centered = s.align !== 'left';
+---
+{hasText(s.quote) && (
+<section id={id} class={`section ${g}`}>
+  <figure class:list={['wrap', { center: centered }]} style="max-width:calc(900px + 2*var(--gutter))">
+    <blockquote class="display q">{s.quote}</blockquote>
+    {hasText(s.attribution) && <figcaption class="kicker mt-m">{s.attribution}</figcaption>}
+  </figure>
+</section>
+)}
+<style>.q { font-size: clamp(34px, 5vw, 52px); line-height: 1.12; text-wrap: balance; }</style>

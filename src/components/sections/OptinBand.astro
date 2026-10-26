@@ -1,0 +1,19 @@
+---
+import { inline, hasText } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+import OptinForm from '../OptinForm.astro';
+const { s, id, g, first } = Astro.props;
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap split band">
+    <div class="grow">
+      <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+      {hasText(s.body) && <p class="body mt-m" style="max-width:30em" set:html={inline(s.body)} />}
+    </div>
+    <div class="side">
+      <OptinForm form={s.form} layout="col" />
+      {hasText(s.helper) && <p class="body-sm mt-s" set:html={inline(s.helper)} />}
+    </div>
+  </div>
+</section>
+<style>.band { align-items: flex-end; } .band .side { flex-basis: 380px; }</style>

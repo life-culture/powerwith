@@ -1,0 +1,23 @@
+---
+import { inline, hasText } from '../../lib/content.js';
+import OptinForm from '../OptinForm.astro';
+import Mark from '../Mark.astro';
+const { s, id, g, first } = Astro.props;
+const Tag = first ? 'h1' : 'h2';
+const centered = s.align !== 'left';
+---
+<section id={id} class={`section ${g}`}>
+  <div class:list={['wrap wrap--cta', { center: centered }]}>
+    {s.show_mark && <div class:list={['markwrap', { c: centered }]}><Mark size={96} stroke={0.9} /></div>}
+    {hasText(s.line) && <Tag class:list={['display line', { italic: s.italic !== false }]}>{s.line}</Tag>}
+    {hasText(s.body) && <p class="body mt-s" set:html={inline(s.body)} />}
+    <div class="formwrap"><OptinForm form={s.form} /></div>
+    {hasText(s.helper) && <p class="body-sm mt-s" set:html={inline(s.helper)} />}
+  </div>
+</section>
+<style>
+  .markwrap { margin-bottom: 32px; }
+  .markwrap.c :global(svg) { margin-inline: auto; }
+  .line { font-size: clamp(36px, 5vw, 50px); line-height: 1.12; }
+  .formwrap { margin-top: 36px; text-align: left; }
+</style>

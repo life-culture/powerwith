@@ -1,0 +1,14 @@
+---
+import { inline, hasText, list } from '../../lib/content.js';
+import SectionHead from '../SectionHead.astro';
+const { s, id, g, first } = Astro.props;
+const paras = list(s.paragraphs);
+---
+<section id={id} class={`section ${g}`}>
+  <div class="wrap wrap--narrow">
+    <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} />
+    {hasText(s.subhead) && <p class="display d-quote mt-m">{s.subhead}</p>}
+    {paras.length > 0 && <div class="grid mt-l" style="--min:300px">{paras.map((p) => <p class="body" set:html={inline(p)} />)}</div>}
+    {hasText(s.closing) && <p class="closing mt-l">{s.closing}</p>}
+  </div>
+</section>

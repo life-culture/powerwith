@@ -1,0 +1,36 @@
+# Thank-you page. Route suggestion /thank-you. Shown after every opt-in. noindex.
+
+seo:
+  title: "The Introduction is on its way"
+  noindex: true
+
+sections:
+
+  - id: confirmation
+    type: confirmation
+    visible: true
+    ground: obsidian
+    align: center
+    mark: "mark-power-with"
+    headline: "The Introduction is on its way."
+    body: "Look for an email from Sophia in the next few minutes. Move it to your primary inbox so her letters keep reaching you."
+
+  - id: preorder-offer
+    type: offer_card
+    visible: true
+    ground: clay
+    label: "PUBLISHING JANUARY 2027"
+    body: "Pre-order now and receive the Orientation guide, a companion for your first reading."
+    button: { label: "PRE-ORDER AND CLAIM THE GUIDE", link: "/preorder", style: primary }
+
+  - id: share
+    type: share_line
+    visible: true
+    text: "Know someone who leads? Send them this page."
+    button: "COPY LINK"
+    share_url: "/introduction"
+
+footer:
+  copyright: "© 2026 SOPHIA LIFE"
+  links:
+    - { label: "BACK TO HOME", link: "/" }

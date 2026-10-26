@@ -1,0 +1,18 @@
+---
+import { inline, hasText } from '../../lib/content.js';
+import Mark from '../Mark.astro';
+const { s, id, g, first } = Astro.props;
+const Tag = first ? 'h1' : 'h2';
+---
+<section id={id} class={`conf ${g}`}>
+  <div class="wrap center" style="max-width:calc(820px + 2*var(--gutter))">
+    {s.show_mark && <div class="m"><Mark size={84} stroke={1} /></div>}
+    {hasText(s.headline) && <Tag class="display d-md">{s.headline}</Tag>}
+    {hasText(s.body) && <p class="body mt-m measure" set:html={inline(s.body)} />}
+  </div>
+</section>
+<style>
+  .conf { padding-block: 72px 48px; }
+  .m { display: flex; justify-content: center; margin-bottom: 32px; }
+  @media (min-width: 768px) { .conf { padding-block: 120px 72px; } }
+</style>

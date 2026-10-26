@@ -1,0 +1,48 @@
+---
+// Renders a page's ordered list of sections. Hidden sections are skipped.
+import { visibleSections, ground } from '../lib/content.js';
+import HeroOptin from './sections/HeroOptin.astro';
+import PraiseStrip from './sections/PraiseStrip.astro';
+import Pattern from './sections/Pattern.astro';
+import ThreeTerms from './sections/ThreeTerms.astro';
+import Benefits from './sections/Benefits.astro';
+import PrincipleGrid from './sections/PrincipleGrid.astro';
+import OptinBand from './sections/OptinBand.astro';
+import NumberedMeasures from './sections/NumberedMeasures.astro';
+import TwoColumns from './sections/TwoColumns.astro';
+import Author from './sections/Author.astro';
+import Endorsements from './sections/Endorsements.astro';
+import Cards from './sections/Cards.astro';
+import TwoLinks from './sections/TwoLinks.astro';
+import OptinCta from './sections/OptinCta.astro';
+import LandingHero from './sections/LandingHero.astro';
+import QuoteBand from './sections/QuoteBand.astro';
+import AuthorShort from './sections/AuthorShort.astro';
+import SalesHero from './sections/SalesHero.astro';
+import ClaimGift from './sections/ClaimGift.astro';
+import Faq from './sections/Faq.astro';
+import Confirmation from './sections/Confirmation.astro';
+import OfferCard from './sections/OfferCard.astro';
+import ShareLine from './sections/ShareLine.astro';
+import TextPage from './sections/TextPage.astro';
+
+const map = {
+  hero_optin: HeroOptin, praise_strip: PraiseStrip, pattern: Pattern, three_terms: ThreeTerms,
+  benefits: Benefits, principle_grid: PrincipleGrid, optin_band: OptinBand, numbered_measures: NumberedMeasures,
+  two_columns: TwoColumns, author: Author, endorsements: Endorsements, cards: Cards, two_links: TwoLinks,
+  optin_cta: OptinCta, landing_hero: LandingHero, quote_band: QuoteBand, author_short: AuthorShort,
+  sales_hero: SalesHero, claim_gift: ClaimGift, faq: Faq, confirmation: Confirmation, offer_card: OfferCard,
+  share_line: ShareLine, text_page: TextPage,
+};
+const { page } = Astro.props;
+const sections = visibleSections(page);
+const seen = new Set();
+---
+{sections.map((s, i) => {
+  const C = map[s.type];
+  if (!C) return null;
+  let id = (s.id ?? '').trim() || undefined;
+  if (id && seen.has(id)) id = `${id}-${i}`;
+  if (id) seen.add(id);
+  return <C s={s} id={id} g={`g-${ground(s.ground)}`} first={i === 0} />;
+})}

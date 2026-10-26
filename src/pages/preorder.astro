@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import Sections from '../components/Sections.astro';
+import { getPage } from '../lib/content.js';
+const page = getPage('preorder');
+---
+<Base page={page} schema={true}>
+  <Sections page={page} />
+</Base>

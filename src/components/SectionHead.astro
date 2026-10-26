@@ -1,0 +1,10 @@
+---
+// Kicker, accent rule and headline. Each part disappears cleanly when empty.
+import { hasText } from '../lib/content.js';
+const { kicker, headline, size = 'standard', h1 = false, scale = 'md', rule = true } = Astro.props;
+const Tag = h1 ? 'h1' : 'h2';
+const cls = `display d-${scale}${size === 'large' ? ' is-large' : ''}`;
+---
+{hasText(kicker) && <p class="kicker">{kicker}</p>}
+{hasText(kicker) && rule && <div class="rule" aria-hidden="true"></div>}
+{hasText(headline) && <Tag class={cls}>{headline}</Tag>}

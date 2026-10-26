@@ -1,0 +1,94 @@
+# Sales page. Route suggestion /preorder. Its job is the transaction.
+# Fuller sales copy may follow once Sophia writes the email sequence. Build every block as editable.
+# SEO strings are drafts for Sophia to review.
+
+seo:
+  title: "Pre-order Power With by Sophia Life"
+  description: "Pre-order Power With and receive the Orientation, a companion for your first reading. Publishing January 2027."
+
+sections:
+
+  - id: hero
+    type: sales_hero
+    visible: true
+    ground: obsidian
+    image: { file: "book-cover-front", alt: "The cover of Power With by Sophia Life." }
+    kicker: "PRE-ORDER · PUBLISHING JANUARY 2027"
+    headline: "Power and closeness, held together."
+    body: "Reserve your copy of Power With and receive the Orientation, a companion for your first reading. Every pre-order counts toward launch week."
+    formats:
+      - name: "PAPERBACK"
+        price: "$21.95"
+        price_note: "[to confirm]"
+        retailers:
+          - { label: "AMAZON", url: "[Amazon paperback URL]", style: primary }
+          - { label: "BARNES & NOBLE", url: "[Barnes & Noble URL]", style: outline }
+          - { label: "BOOKSHOP.ORG", url: "[Bookshop.org URL]", style: outline }
+          - { label: "YOUR LOCAL BOOKSTORE", url: "[IndieBound or store finder URL]", style: outline }
+      - name: "KINDLE"
+        price: "[PRICE]"
+        retailers:
+          - { label: "AMAZON KINDLE", url: "[Kindle URL]", style: outline }
+      - name: "AUDIOBOOK"
+        price: "COMING"
+        note: "An audiobook is planned. Readers on the list hear first."
+        retailers: []
+
+  - id: orientation
+    type: claim_gift
+    visible: true
+    ground: clay
+    anchor: "claim"
+    kicker: "PRE-ORDER GIFT"
+    headline: "Pre-order and receive the Orientation."
+    body: "A companion for your first reading. Power With asks a great deal of its reader. The Orientation helps you take it in and keep it close."
+    list_label: "INSIDE THE ORIENTATION"
+    list:
+      - "The framework on one page. Power, power over and power with."
+      - "The ten principles at a glance, with the practice from each."
+      - "How to read the book. Straight through once, then back to the principles one at a time."
+      - "The five measures of success, set as a reflection to return to."
+      - "The pause, the single practice beneath all ten."
+    form:
+      intro: "Order from any retailer, then enter your order number. The Orientation arrives by email."
+      name_label: "NAME"
+      email_label: "EMAIL"
+      store_label: "WHERE YOU ORDERED"
+      store_options: ["Amazon", "Barnes & Noble", "Bookshop.org", "Local bookstore"]
+      order_label: "ORDER NUMBER"
+      button: "CLAIM THE ORIENTATION"
+      source: "preorder-claim"
+
+  - id: gift-and-bulk
+    type: two_links
+    visible: true
+    ground: obsidian
+    items:
+      - label: "GIVE THIS BOOK"
+        headline: "For the leader in your life."
+        body: "Give them the book, and keep a copy for yourself."
+        buttons:
+          - { label: "SEND A COPY", link: "#formats", style: outline }
+      - label: "FOR TEAMS"
+        headline: "Copies for your leadership team."
+        body: "Orders of ten or more receive tier pricing and a reading guide. [Tier pricing to set.]"
+        buttons:
+          - { label: "ORDER IN BULK", link: "/#contact", style: outline }
+
+  - id: questions
+    type: faq
+    visible: true
+    ground: obsidian
+    kicker: "QUESTIONS"
+    items:
+      - { question: "When will my copy arrive?", answer: "Pre-orders ship on publication day in January 2027. [Exact date to confirm.]" }
+      - { question: "Which formats include the Orientation?", answer: "Every pre-order, in any format, from any retailer." }
+      - { question: "Is there an audiobook?", answer: "Yes. An audiobook is planned, and readers on the list will hear first." }
+      - { question: "Can my company order in bulk?", answer: "Yes. Orders of ten or more receive tier pricing and a reading guide." }
+
+footer:
+  use_site_footer: true
+
+# Production note for the developer: Amazon KDP does not take paperback pre-orders.
+# Paperback pre-order links may need IngramSpark-distributed listings, or the paperback
+# buttons may show "Available January 2027" until release. Confirm with Sophia.

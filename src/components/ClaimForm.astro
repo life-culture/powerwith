@@ -1,0 +1,52 @@
+---
+import { getSettings, inline, hasText, list } from '../lib/content.js';
+const { form = {} } = Astro.props;
+const f = getSettings().forms ?? {};
+const endpoint = hasText(f.claim_destination) && !f.claim_destination.startsWith('[') ? f.claim_destination : '';
+const uid = `claim-${Math.random().toString(36).slice(2, 7)}`;
+---
+<form
+  class="js-optin form-col"
+  method="post"
+  novalidate
+  data-endpoint={endpoint}
+  data-source={form.source ?? 'preorder-claim'}
+  data-kind="claim"
+  data-success={form.success_message}
+  data-msg-required={f.messages?.email_required}
+  data-msg-invalid={f.messages?.email_invalid}
+  data-msg-error={f.messages?.error}
+  data-msg-sending={f.messages?.sending}
+>
+  {hasText(form.intro) && <p class="body-sm" set:html={inline(form.intro)} />}
+  <div class="field">
+    <label for={`${uid}-name`}>{form.name_label}</label>
+    <input class="input" id={`${uid}-name`} name="first_name" type="text" autocomplete="name" />
+  </div>
+  <div class="field">
+    <label for={`${uid}-email`}>{form.email_label}</label>
+    <input class="input" id={`${uid}-email`} name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby={`${uid}-msg`} />
+  </div>
+  {list(form.store_options).length > 0 && (
+    <div class="field">
+      <label for={`${uid}-store`}>{form.store_label}</label>
+      <select class="input" id={`${uid}-store`} name="retailer">
+        {list(form.store_options).map((o) => <option>{o}</option>)}
+      </select>
+    </div>
+  )}
+  <div class="field">
+    <label for={`${uid}-order`}>{form.order_label}</label>
+    <input class="input" id={`${uid}-order`} name="order_number" type="text" autocomplete="off" />
+  </div>
+  <div class="hp" aria-hidden="true">
+    <label for={`${uid}-website`}>Website</label>
+    <input id={`${uid}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <button class="btn btn--primary" type="submit">{form.button}</button>
+  <p class="form-msg" id={`${uid}-msg`} role="alert" aria-live="polite"></p>
+</form>
+<script>
+  import { wireForms } from '../scripts/forms.js';
+  wireForms();
+</script>

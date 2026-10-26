@@ -1,0 +1,41 @@
+# Site-wide settings. All editable by Sophia except the form destination,
+# which the developer sets and she can see.
+
+site:
+  name: "Power With"
+  author: "Sophia Life"
+  domain: "[to be registered in Sophia's name]"
+  default_social_image: "[Book cover social image, 1200 x 630]"
+
+navigation:
+  logo: { mark: "mark-power-with", wordmark: "POWER WITH", link: "/" }
+  items:
+    - { label: "THE FRAMEWORK", link: "/#framework" }
+    - { label: "THE PRINCIPLES", link: "/#principles" }
+    - { label: "THE AUTHOR", link: "/#author" }
+    - { label: "FOR ORGANIZATIONS", link: "/#organizations" }
+  preorder_link: { visible: true, label: "PRE-ORDER", link: "/preorder" }
+  button: { label: "GET THE INTRODUCTION", link: "/#introduction" }
+
+footer:
+  wordmark_line: "POWER WITH · SOPHIA LIFE"
+  links:
+    - { label: "CONTACT", link: "[contact email or form]" }
+    - { label: "INSTAGRAM", link: "https://www.instagram.com/sophia.life.wisdom" }
+    - { label: "LINKEDIN", link: "[LinkedIn URL]" }
+    - { label: "SUBSTACK", link: "[The Quality of Life URL]" }
+    - { label: "PRE-ORDER", link: "/preorder" }
+    - { label: "PRIVACY", link: "/privacy" }
+  copyright: "© 2026 SOPHIA LIFE"
+
+forms:
+  # Single destination for every opt-in form. Email platform not set up yet (GoHighLevel planned).
+  optin_destination: "[set when the email platform is ready]"
+  claim_destination: "[set when the email platform is ready]"
+  success_redirect: "/thank-you"
+  messages:
+    email_required: "Please enter your email address."
+    email_invalid: "Please check your email address."
+    error: "Something went wrong. Please try again in a moment."
+
+# The three form messages above are new strings written to Sophia's voice rules. She should review them.
