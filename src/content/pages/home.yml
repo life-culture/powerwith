@@ -5,8 +5,11 @@ seo:
   noindex: false
 header:
   style: full
+  button: null
 footer:
   style: site
+  copyright: ''
+  links: []
 sticky_bar:
   visible: true
   label: FREE · THE INTRODUCTION
@@ -14,9 +17,9 @@ sticky_bar:
   target: '#introduction'
 sections:
   - type: hero_optin
-    id: top
     visible: true
     ground: obsidian
+    id: top
     kicker: A BOOK BY SOPHIA LIFE
     title: Power With
     subtitle: The Relational Foundation of Lasting Influence
@@ -25,6 +28,7 @@ sections:
     form:
       show_first_name: false
       first_name_label: FIRST NAME
+      first_name_placeholder: ''
       email_label: EMAIL ADDRESS
       email_placeholder: you@example.com
       button: SEND ME THE INTRODUCTION
@@ -34,15 +38,15 @@ sections:
       src: /uploads/book-cover-front.jpg
       alt: The cover of Power With by Sophia Life. Black, with the title in widely spaced capitals above two overlapping circles.
   - type: praise_strip
-    id: praise-strip
     visible: false
     ground: umber
+    id: praise-strip
     quote: '[Strongest endorsement, one sentence.]'
     attribution: '[NAME, TITLE]'
   - type: pattern
-    id: pattern
     visible: true
     ground: oxblood
+    id: pattern
     kicker: THE PATTERN
     headline: The drive that builds companies can dismantle marriages.
     headline_size: standard
@@ -52,12 +56,13 @@ sections:
       - The strategies that win in competition are specific. Control, self-sufficiency, the refusal to be affected, the need to stay ahead. At home and on a team, those same strategies create distance. The cost builds so slowly that most people see it only once it runs deep.
     closing: Power With makes the pattern visible while it can still change.
   - type: three_terms
-    id: framework
     visible: true
     ground: bone
+    id: framework
     kicker: THE FRAMEWORK
     headline: A language for power.
     headline_size: large
+    closing: The trust you build carries forward in your absence. That is lasting influence.
     intro: Three terms carry the whole book. They are simple to define. Once you hold them, you see every relationship, every team and every room differently.
     items:
       - label: POWER
@@ -72,15 +77,15 @@ sections:
         icon: mark-power-with
         definition: Power with is the use of influence to stay in relationship.
         body: It holds authority and relationship at the same time. You lead, decide and act while staying connected to the people your choices affect. It is the more disciplined orientation, and it asks more of you than power over ever did.
-    closing: The trust you build carries forward in your absence. That is lasting influence.
   - type: benefits
-    id: what-changes
     visible: true
     ground: obsidian
+    id: what-changes
     kicker: WHAT THIS BOOK GIVES YOU
+    quote: My intent in writing this book is to support you in becoming more powerful than you have ever been, while building the quality of relationships your life actually depends on.
     headline: Power and closeness, held together.
     headline_size: standard
-    quote: My intent in writing this book is to support you in becoming more powerful than you have ever been, while building the quality of relationships your life actually depends on.
+    closing: These patterns took decades to form. The book gives you a clear map and practices to return to, one conversation at a time.
     quote_attribution: SOPHIA LIFE
     columns:
       - label: AT HOME
@@ -97,50 +102,81 @@ sections:
       - Repair after rupture, so trust grows stronger through conflict.
       - Lead from relational authority, the kind people follow by choice.
       - Use the pause, the thirty seconds that change what you say next.
-    closing: These patterns took decades to form. The book gives you a clear map and practices to return to, one conversation at a time.
   - type: principle_grid
-    id: principles
     visible: true
     ground: umber
-    kicker: THE TEN PRINCIPLES
+    id: principles
+    kicker: OUR TEN PRINCIPLES
     headline: Ten capacities make power with possible.
     headline_size: standard
+    closing: Each return is the practice.
     intro: Each principle is a practice. Each one closes with a single action you can begin today. Together they build the capacity to stay connected under pressure.
     items:
-      - { number: '01', name: EMOTIONAL REGULATION, line: Staying present through discomfort., icon: principle-01-regulation }
-      - { number: '02', name: EMPATHY, line: Prioritizing another's experience when it matters most., icon: principle-02-empathy }
-      - { number: '03', name: LISTENING, line: Receiving another person's world., icon: principle-03-listening }
-      - { number: '04', name: HUMILITY, line: Remaining teachable while staying yourself., icon: principle-04-humility }
-      - { number: '05', name: UNDERSTANDING, line: Holding more than one perspective., icon: principle-05-understanding }
-      - { number: '06', name: RELATIONALITY, line: Transforming control into connection., icon: principle-06-relationality }
-      - { number: '07', name: INTEGRITY, line: 'Aligning word, action and energy.', icon: principle-07-integrity }
-      - { number: '08', name: TRUST, line: 'Building safety through consistency, transparency and care.', icon: principle-08-trust }
-      - { number: '09', name: RESPONSIBILITY, line: Owning your impact., icon: principle-09-responsibility }
-      - { number: '10', name: REPAIR, line: Coming back., icon: principle-10-repair }
-    closing: Each return is the practice.
+      - icon: principle-01-regulation
+        number: '01'
+        name: EMOTIONAL REGULATION
+        line: Staying present through discomfort.
+      - icon: principle-02-empathy
+        number: '02'
+        name: EMPATHY
+        line: Prioritizing another's experience when it matters most.
+      - icon: principle-03-listening
+        number: '03'
+        name: LISTENING
+        line: Receiving another person's world.
+      - icon: principle-04-humility
+        number: '04'
+        name: HUMILITY
+        line: Remaining teachable while staying yourself.
+      - icon: principle-05-understanding
+        number: '05'
+        name: UNDERSTANDING
+        line: Holding more than one perspective.
+      - icon: principle-06-relationality
+        number: '06'
+        name: RELATIONALITY
+        line: Transforming control into connection.
+      - icon: principle-07-integrity
+        number: '07'
+        name: INTEGRITY
+        line: Aligning word, action and energy.
+      - icon: principle-08-trust
+        number: '08'
+        name: TRUST
+        line: Building safety through consistency, transparency and care.
+      - icon: principle-09-responsibility
+        number: '09'
+        name: RESPONSIBILITY
+        line: Owning your impact.
+      - icon: principle-10-repair
+        number: '10'
+        name: REPAIR
+        line: Coming back.
   - type: optin_band
-    id: introduction
     visible: true
     ground: clay
+    id: introduction
     kicker: FREE · THE INTRODUCTION
-    headline: Read the first pages tonight.
-    headline_size: standard
     body: The Introduction gives you the full language of the book. Power, power over and power with. The pattern beneath success. Why these patterns can change. Read it before you decide.
     form:
       show_first_name: true
       first_name_label: FIRST NAME
+      first_name_placeholder: ''
       email_label: EMAIL ADDRESS
       email_placeholder: ''
       button: SEND ME THE INTRODUCTION
       source: home-middle
     helper: The Introduction arrives today, followed by occasional letters from Sophia. Unsubscribe anytime.
+    headline: Read the first pages tonight.
+    headline_size: standard
   - type: numbered_measures
-    id: measures
     visible: true
     ground: obsidian
+    id: measures
     kicker: A NEW MEASURE
     headline: Success is measured in relationship.
     headline_size: standard
+    closing: These are the hardest measures there are.
     intro: Power With offers five measures. Read them slowly. Notice which one stays with you.
     items:
       - The safety people feel in your presence.
@@ -148,14 +184,14 @@ sections:
       - The quality of your attention when others speak.
       - Your willingness to repair when you have caused harm.
       - The depth of connection you sustain over time.
-    closing: These are the hardest measures there are.
   - type: two_columns
-    id: authority
     visible: true
     ground: olive
+    id: authority
     kicker: FOR LEADERS
     headline: The authority people follow by choice.
     headline_size: standard
+    closing: The inner work is the leadership work.
     columns:
       - label: POSITIONAL AUTHORITY
         body: It comes with the title. It can compel compliance and direct behavior. Compliance is its ceiling.
@@ -163,20 +199,19 @@ sections:
       - label: RELATIONAL AUTHORITY
         body: It accumulates through trust. People bring you problems early. They tell you what they tell no one else. They commit to decisions they did not make, and they stay when they could leave.
         highlight: true
-    closing: The inner work is the leadership work.
   - type: author
-    id: author
     visible: true
     ground: bone
+    id: author
     kicker: THE AUTHOR
-    name: Sophia Life
-    portrait:
-      src: ''
-      alt: '[Describe the chosen portrait of Sophia Life]'
     paragraphs:
       - Sophia Life writes from the field. For more than a decade she has studied the patterns in this book up close and practiced the principles that change them.
       - She paired that practice with years of study across depth psychology, attachment theory, developmental psychology, neuroscience, systems thinking, leadership theory and relational philosophy. The result is a synthesis written for the person living inside these patterns, and for the person who loves them.
       - Sophia is a coach and organizational consultant with a background in urban planning and product development. She writes The Quality of Life on Substack and lives in Boulder, Colorado. [Years in practice, notable clients and speaking credits.]
+    name: Sophia Life
+    portrait:
+      src: ''
+      alt: '[Describe the chosen portrait of Sophia Life]'
     names_label: THE THINKING BEHIND THE BOOK
     names:
       - Carol Gilligan
@@ -189,63 +224,86 @@ sections:
       - Joseph Burgo
       - Daniel Schmachtenberger
     buttons:
-      - { label: INVITE SOPHIA TO SPEAK, link: '#contact', style: outline }
-      - { label: READ HER ESSAYS, link: '#essays', style: outline }
+      - label: INVITE SOPHIA TO SPEAK
+        link: '#contact'
+        style: outline
+      - label: READ HER ESSAYS
+        link: '#essays'
+        style: outline
   - type: endorsements
-    id: praise
     visible: false
     ground: obsidian
+    id: praise
     kicker: PRAISE FOR POWER WITH
+    headline: ''
     items:
-      - { quote: '[Endorsement from a recognized author on leadership or relationships.]', name: '[NAME]', title: '[BOOK OR TITLE]' }
-      - { quote: '[Endorsement from an executive or founder who has read an advance copy.]', name: '[NAME]', title: '[TITLE, COMPANY]' }
-      - { quote: '[Endorsement from a clinician or coach.]', name: '[NAME]', title: '[CREDENTIAL]' }
+      - name: '[NAME]'
+        quote: '[Endorsement from a recognized author on leadership or relationships.]'
+        title: '[BOOK OR TITLE]'
+      - name: '[NAME]'
+        quote: '[Endorsement from an executive or founder who has read an advance copy.]'
+        title: '[TITLE, COMPANY]'
+      - name: '[NAME]'
+        quote: '[Endorsement from a clinician or coach.]'
+        title: '[CREDENTIAL]'
   - type: cards
-    id: organizations
     visible: true
     ground: umber
+    id: organizations
     kicker: FOR ORGANIZATIONS
     headline: Bring power with into how your team leads.
     headline_size: standard
     intro: Leadership regenerates or degenerates at three pressure points. How you make decisions. How you hold accountability. How you relate to conflict. Sophia works with leaders and teams on all three.
     items:
-      - { label: KEYNOTES, body: 'Sophia speaks on relational power to conferences, boards and leadership retreats.' }
-      - { label: WORKSHOPS, body: 'The ten principles brought into how your team meets, decides and repairs.' }
-      - { label: ADVISORY, body: Ongoing work with leaders who want their authority to rest on trust. }
+      - label: KEYNOTES
+        body: Sophia speaks on relational power to conferences, boards and leadership retreats.
+      - label: WORKSHOPS
+        body: The ten principles brought into how your team meets, decides and repairs.
+      - label: ADVISORY
+        body: Ongoing work with leaders who want their authority to rest on trust.
     buttons:
-      - { label: START A CONVERSATION, link: '#contact', style: primary }
+      - label: START A CONVERSATION
+        link: '#contact'
+        style: primary
   - type: two_links
-    id: press-essays
     visible: true
     ground: obsidian
+    id: press-essays
     items:
-      - anchor: press
-        label: PRESS AND PODCASTS
-        headline: Interview Sophia about power, leadership and intimacy.
+      - label: PRESS AND PODCASTS
         body: Download the media kit with bio, headshots, cover art and suggested questions.
+        anchor: press
+        headline: Interview Sophia about power, leadership and intimacy.
         buttons:
-          - { label: MEDIA KIT, link: '[media kit file]', style: outline }
-          - { label: BOOK AN INTERVIEW, link: '#contact', style: outline }
-      - anchor: essays
-        label: THE QUALITY OF LIFE
-        headline: Essays drawn from the ideas in Power With.
+          - label: MEDIA KIT
+            link: '[media kit file]'
+            style: outline
+          - label: BOOK AN INTERVIEW
+            link: '#contact'
+            style: outline
+      - label: THE QUALITY OF LIFE
         body: '[Latest three essays from Substack.]'
+        anchor: essays
+        headline: Essays drawn from the ideas in Power With.
         buttons:
-          - { label: SUBSCRIBE ON SUBSTACK, link: '[Substack URL]', style: outline }
+          - label: SUBSCRIBE ON SUBSTACK
+            link: '[Substack URL]'
+            style: outline
   - type: optin_cta
-    id: begin
     visible: true
     ground: clay
-    align: center
-    show_mark: true
-    italic: true
-    line: Influence that keeps the relationship intact.
+    id: begin
     body: Begin with the Introduction. It is free.
     form:
       show_first_name: false
       first_name_label: FIRST NAME
+      first_name_placeholder: ''
       email_label: EMAIL ADDRESS
       email_placeholder: ''
       button: SEND ME THE INTRODUCTION
       source: home-final
     helper: ''
+    align: center
+    show_mark: true
+    italic: true
+    line: Influence that keeps the relationship intact.
