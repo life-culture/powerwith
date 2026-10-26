@@ -11,14 +11,14 @@ const card = s.form_card ?? {};
     <div class="grow">
       <SectionHead kicker={s.kicker} headline={s.headline} size={s.headline_size} h1={first} scale="lg" />
       {hasText(s.subhead) && <p class="display italic muted sub">{s.subhead}</p>}
-      {hasText(s.body) && <p class="body measure mt-m" set:html={inline(s.body)} />}
+      {hasText(s.body) && <p class="body measure mt-m after" set:html={inline(s.body)} />}
       {items.length > 0 && (
         <>
-          {hasText(s.list_label) && <h2 class="kicker mt-l">{s.list_label}</h2>}
-          <ul class="rule-list mt-s items">{items.map((t) => <li set:html={inline(t)} />)}</ul>
+          {hasText(s.list_label) && <h2 class="kicker mt-l after">{s.list_label}</h2>}
+          <ul class="rule-list mt-s items after">{items.map((t) => <li set:html={inline(t)} />)}</ul>
         </>
       )}
-      {hasText(s.audience) && <p class="body muted mt-m" set:html={inline(s.audience)} />}
+      {hasText(s.audience) && <p class="body muted mt-m after" set:html={inline(s.audience)} />}
     </div>
     <div class={`side card g-${ground(card.ground, 'clay')}`}>
       {hasText(card.heading) && <p class="display d-quote heading">{card.heading}</p>}
@@ -35,5 +35,13 @@ const card = s.form_card ?? {};
   .items li { padding-block: 12px; }
   .card { padding: 28px 22px; flex-basis: 360px; }
   .heading { margin-bottom: 18px; }
+  @media (max-width: 767px) {
+    /* Phones: the signup card follows the headline, as in the mobile wireframe. */
+    .inner { flex-direction: column; gap: 0; }
+    .grow { display: contents; }
+    .card { order: 5; margin-top: 28px; width: 100%; }
+    .after { order: 10; }
+    .measure.after { margin-top: 36px; }
+  }
   @media (min-width: 768px) { .hero { padding-block: 80px 96px; } .card { padding: 36px; position: sticky; top: 24px; } }
 </style>

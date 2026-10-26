@@ -3,6 +3,8 @@ backend:
   name: github
   repo: life-culture/powerwith
   branch: main
+  base_url: https://powerwith.vercel.app
+  auth_endpoint: api/auth
   commit_messages:
     update: Update {{collection}} “{{slug}}” from the editor
     uploadMedia: Upload “{{path}}” from the editor

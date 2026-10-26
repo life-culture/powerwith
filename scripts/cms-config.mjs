@@ -6,7 +6,7 @@ import { dump } from 'js-yaml';
 
 const REPO = process.env.CMS_REPO || 'life-culture/powerwith';
 const SITE_URL = process.env.CMS_SITE_URL || 'https://life-culture.github.io/powerwith/';
-const AUTH_URL = process.env.CMS_AUTH_URL || '';
+const AUTH_URL = process.env.CMS_AUTH_URL || 'https://powerwith.vercel.app';
 
 // ---------- field helpers ----------
 const str = (name, label, hint, extra = {}) => ({ name, label, widget: 'string', required: false, ...(hint && { hint }), ...extra });
