@@ -176,7 +176,7 @@ const config = {
   },
   site_url: SITE_URL,
   display_url: SITE_URL,
-  logo: { src: 'favicon.svg' },
+  logo: { src: `${SITE_URL}favicon.svg` },
   media_folder: 'public/uploads',
   public_folder: '/uploads',
   media_libraries: {

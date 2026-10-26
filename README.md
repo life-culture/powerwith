@@ -39,7 +39,7 @@ Requires Node 20 or newer.
 
 1. Import this repo into Vercel (Add New → Project → `life-culture/powerwith`). Framework preset Astro is fine.
 2. Add environment variables: `EMAILOCTOPUS_API_KEY`, `EMAILOCTOPUS_LIST_ID`, `ALLOWED_ORIGINS` (see `.env.example`).
-3. Deploy, then put `https://<project>.vercel.app/api/subscribe` in **Site settings → Forms** for both destinations.
+3. Deploy, then put `https://powerwith.vercel.app/api/subscribe` in **Site settings → Forms** for both destinations.
 
 Until a destination is set, forms run in preview mode: they validate and go to the thank-you page without sending anything.
 
@@ -47,9 +47,9 @@ Until a destination is set, forms run in preview mode: they validate and go to t
 
 Out of the box, the editor offers **Sign in with Token** (a GitHub personal access token). For a one-click button:
 
-1. GitHub → Settings → Developer settings → OAuth Apps → New. Homepage `https://life-culture.github.io/powerwith/`. Callback `https://<project>.vercel.app/api/callback`.
+1. GitHub → Settings → Developer settings → OAuth Apps → New. Homepage `https://life-culture.github.io/powerwith/`. Callback `https://powerwith.vercel.app/api/callback`.
 2. Add `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` to Vercel.
-3. Rebuild the editor config with `CMS_AUTH_URL=https://<project>.vercel.app npm run cms`, commit and push.
+3. Rebuild the editor config with `CMS_AUTH_URL=https://powerwith.vercel.app npm run cms`, commit and push.
 
 ## Moving to Sophia's domain
 

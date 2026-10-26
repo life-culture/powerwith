@@ -48,8 +48,8 @@ footer:
       link: /privacy
   copyright: © 2026 SOPHIA LIFE
 forms:
-  optin_destination: ''
-  claim_destination: ''
+  optin_destination: https://powerwith.vercel.app/api/subscribe
+  claim_destination: https://powerwith.vercel.app/api/subscribe
   success_redirect: /thank-you
   messages:
     email_required: Please enter your email address.

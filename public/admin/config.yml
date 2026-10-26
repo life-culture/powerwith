@@ -9,7 +9,7 @@ backend:
 site_url: https://life-culture.github.io/powerwith/
 display_url: https://life-culture.github.io/powerwith/
 logo:
-  src: favicon.svg
+  src: https://life-culture.github.io/powerwith/favicon.svg
 media_folder: public/uploads
 public_folder: /uploads
 media_libraries:
