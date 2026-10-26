@@ -9,6 +9,8 @@ export default function handler(req, res) {
   res.setHeader('Set-Cookie', `oauth_state=${state}; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=600`);
   const url = new URL('https://github.com/login/oauth/authorize');
   url.searchParams.set('client_id', id);
+  // Must match the OAuth app's "Authorization callback URL" exactly.
+  url.searchParams.set('redirect_uri', `https://${req.headers.host}/api/callback`);
   url.searchParams.set('scope', 'repo,user');
   url.searchParams.set('state', state);
   res.redirect(302, url.href);
